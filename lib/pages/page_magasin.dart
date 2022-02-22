@@ -48,7 +48,7 @@ class _PageMagasinState extends State<PageMagasin> {
                     controller: TextEditingController(text:  magasin?.nom),
                     decoration: InputDecoration(
                         labelText: 'Nom Magasin:',
-                        hintText: (magasin==null) ? 'ex: Leclerc' : magasin.nom
+                        hintText: (magasin==null) ? 'ex: Leclerc' : magasin?.nom
                     ),
                     onChanged: (String str) {
                       newMagasinNom = str;
@@ -58,7 +58,7 @@ class _PageMagasinState extends State<PageMagasin> {
                     controller: TextEditingController(text:  magasin?.ville) ,
                     decoration: InputDecoration(
                         labelText: 'Ville Magasin:',
-                        hintText: (magasin==null) ? 'ex: Rouen' : magasin.ville
+                        hintText: (magasin==null) ? 'ex: Rouen' : magasin?.ville
                     ),
                     onChanged: (String str) {
                       newMagasinVille = str;
