@@ -41,7 +41,7 @@ class _PageArticleAddState extends State<PageArticleAdd> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   (image == null)
-                      ?Image.asset('assets/images/no_image.png')
+                      ?Image.asset('assets/img/no_image.png')
                       :Image.file(File(image!)),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -55,7 +55,7 @@ class PageArticleList extends StatelessWidget {
                           // Image
                           Expanded(
                               child: (art.image == null)
-                                  ?Image.asset('assets/images/no_image.png')
+                                  ?Image.asset('assets/img/no_image.png')
                                   :Image.file(File(art.image!)),
                           ),
                           //Prix + Delete
