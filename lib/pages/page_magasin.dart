@@ -33,6 +33,9 @@ class _PageMagasinState extends State<PageMagasin> {
             return Center(child: Text("NoData"),);
           }
           List<Magasin> magasins = snapshot.data!;
+          if(magasins.length == 0){
+            return Center(child: Text("NoData"),);
+          }
           return ListView.builder(
             itemCount: magasins.length,
             itemBuilder: (context, index){
@@ -42,7 +45,9 @@ class _PageMagasinState extends State<PageMagasin> {
                 subtitle: Text(mag.ville),
                 trailing: IconButton(
                   icon: Icon(Icons.delete),
-                  onPressed: null,
+                  onPressed: (){
+                    MagasinManager.remove(mag);
+                  },
                 ),
                 leading: IconButton(
                   icon: Icon(Icons.edit),

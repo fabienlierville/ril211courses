@@ -18,5 +18,11 @@ class MagasinManager{
 
   }
 
+  static bool remove(Magasin mag){
+    if(GlobalVars.store != null){
+      return GlobalVars.store!.box<Magasin>().remove(mag.id);
+    }
+    return false;
+  }
 
 }
