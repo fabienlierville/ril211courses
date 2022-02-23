@@ -1,5 +1,6 @@
 import 'package:course/global_vars.dart';
 import 'package:course/models/magasin.dart';
+import 'package:course/models/magasin_manager.dart';
 import 'package:course/objectbox.g.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,35 @@ class _PageMagasinState extends State<PageMagasin> {
           ),
         ],
       ),
-      body: Center(),
+      body: StreamBuilder<List<Magasin>>(
+        stream: MagasinManager.getAllStream(),
+        builder: (context, snapshot){
+          if(!snapshot.hasData){
+            return Center(child: Text("NoData"),);
+          }
+          List<Magasin> magasins = snapshot.data!;
+          return ListView.builder(
+            itemCount: magasins.length,
+            itemBuilder: (context, index){
+              Magasin mag = magasins[index];
+              return ListTile(
+                title: Text(mag.nom),
+                subtitle: Text(mag.ville),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: null,
+                ),
+                leading: IconButton(
+                  icon: Icon(Icons.edit),
+                  onPressed: (){
+                    upsert(mag);
+                  },
+                ),
+              );
+            },
+          );
+        },
+      ),
     );
   }
 
