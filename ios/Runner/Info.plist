@@ -4,6 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Appareil Photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Appareil Photo</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Appareil Photo</string>
 	<key>CFBundleDisplayName</key>
 	<string>Course</string>
 	<key>CFBundleExecutable</key>
