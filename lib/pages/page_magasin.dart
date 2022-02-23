@@ -2,16 +2,10 @@ import 'package:course/global_vars.dart';
 import 'package:course/models/magasin.dart';
 import 'package:course/models/magasin_manager.dart';
 import 'package:course/objectbox.g.dart';
+import 'package:course/pages/page_article_list.dart';
 import 'package:flutter/material.dart';
 
-class PageMagasin extends StatefulWidget {
-  const PageMagasin({Key? key}) : super(key: key);
-
-  @override
-  _PageMagasinState createState() => _PageMagasinState();
-}
-
-class _PageMagasinState extends State<PageMagasin> {
+class PageMagasin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +14,7 @@ class _PageMagasinState extends State<PageMagasin> {
         actions: [
           TextButton(
               onPressed: (){
-                upsert(null);
+                upsert(null,context);
               },
               child: Text("Ajouter", style: TextStyle(color: Colors.black),)
           ),
@@ -52,9 +46,15 @@ class _PageMagasinState extends State<PageMagasin> {
                 leading: IconButton(
                   icon: Icon(Icons.edit),
                   onPressed: (){
-                    upsert(mag);
+                    upsert(mag,context);
                   },
                 ),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (BuildContext buildContext){
+                    return PageArticleList(magasin: mag);
+                  }));
+                },
+
               );
             },
           );
@@ -63,7 +63,7 @@ class _PageMagasinState extends State<PageMagasin> {
     );
   }
 
-  Future<void> upsert(Magasin? magasin) async {
+  Future<void> upsert(Magasin? magasin, BuildContext context) async {
     String? newMagasinNom = magasin?.nom ?? null;
     String? newMagasinVille = magasin?.ville ?? null;
 
